@@ -1,5 +1,6 @@
 # Program 1-D_pulse
-use -lm as math library is also involve.
+use -lm as math library is also involve.<br>
+Output data are saved in Outdata.dat
 
 
 #### Variables
