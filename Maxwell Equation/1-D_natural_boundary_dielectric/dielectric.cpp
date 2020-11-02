@@ -24,6 +24,7 @@ int main(int argc, char const *argv[]) {
       E[i]+= 0.5*(B[i-1]-B[i]);
 
     E[kc] += pulse;
+
     // Mur Conditions modified (Inelastic boundary)
     E[0] = Eold[0] - (1.0/3.0)*(E[1]-E[0]);
     E[cells-1] = Eold[1] - (1.0/3.0)*(E[cells-2]-E[cells-1]);
@@ -31,9 +32,9 @@ int main(int argc, char const *argv[]) {
     for(int i=0; i<cells-1;i++)
       B[i] += 0.5*(E[i]-E[i+1]);
 
-    for(int i=0;i<cells; i++){
+    for(int i=0;i<cells; i++)
       fprintf(f, "%i\t%f\t%f\n",i+1,E[i],B[i]);
-    }
+    
   }
   fclose(f);
   f = fopen("gnuE.txt","w");
