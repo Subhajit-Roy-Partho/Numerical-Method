@@ -7,4 +7,4 @@ The package contains
 - Maxwell Equation simulation using c.
 
 
-<b>The codes comes with no warrenty and might fail most of the time. So them at your own risk.</br>
+<b>The codes comes with no warrenty and might fail most of the time. So use them at your own risk.</br>
