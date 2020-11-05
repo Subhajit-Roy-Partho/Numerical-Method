@@ -1,0 +1,12 @@
+set hidden3d
+set pm3d
+set isosample 11
+set sample 11
+set term gif large animate delay 3 optimize
+set output 'out.gif'
+set print '-'
+do for [i=1:2000]{
+splot 'Data/out'.i.'.dat' matrix w l
+ print i
+}
+exit
