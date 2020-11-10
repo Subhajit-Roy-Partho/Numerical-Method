@@ -30,6 +30,6 @@ mpicc hello.c -o hello; mpiexec --use-hwthread-cpus hello
 - `int MPI_Barrier(MPI_Comm comm)` - barrier point for sync. :rage: Caution: If all the process doesn't hit the barrier at least once the program would freez for  every and won't proceed.
 
 - `int MPI_Bcast(void *buffer, int count, MPI_Datatype datatype, int root, MPI_Comm comm)`
-- - root is the rank of the sending unit. Encountered by others will receive the data send by the root process.
+	- root is the rank of the sending unit. Encountered by others will receive the data send by the root process.
 
 - `MPI_Finalize()` End MPI
