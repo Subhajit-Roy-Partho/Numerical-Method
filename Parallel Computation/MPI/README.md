@@ -23,7 +23,9 @@ mpicc hello.c -o hello; mpiexec --use-hwthread-cpus hello
 - `MPI_Status status` - Mpi status datatype.
 - `int MPI_Get_count(const MPI_Status * status, MPI_Datatype datatype, int *count)` example `MPI_Get_count(&status,MPI_INT,&count)` - gives the count of the number of data packets received. &count stores the number of data-packets received.
 
+- `int MPI_Recv(void *buf, int count, MPI_Datatype datatype, int source, int tag,
+       MPI_Comm comm, MPI_Status * status)` example `MPI_Recv(numbers,100,MPI_INT,0,0,MPI_COMM_WORLD,&status)` - for receiving point to point send data.
 
-
+- `int MPI_Barrier(MPI_Comm comm)` - barrier point for sync. <span style="background-color: #FFFF00">Marked text</span>
 
 - `MPI_Finalize()` Finalize MPI
