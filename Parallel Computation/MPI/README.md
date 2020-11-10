@@ -27,6 +27,6 @@ mpicc hello.c -o hello; mpiexec --use-hwthread-cpus hello
 - `int MPI_Recv(void *buf, int count, MPI_Datatype datatype, int source, int tag,
        MPI_Comm comm, MPI_Status * status)` example `MPI_Recv(numbers,100,MPI_INT,0,0,MPI_COMM_WORLD,&status)` - for receiving point to point send data.
 
-- `int MPI_Barrier(MPI_Comm comm)` - barrier point for sync.b <font color="red">Caution:</font>>
+- `int MPI_Barrier(MPI_Comm comm)` - barrier point for sync.b <font color="red"> Caution: </font>>
 
 - `MPI_Finalize()` End MPI
