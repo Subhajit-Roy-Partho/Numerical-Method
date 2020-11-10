@@ -17,7 +17,7 @@ mpicc hello.c -o hello; mpiexec --use-hwthread-cpus hello
 
 ### Functions
 
-- `MPI_Init(NULL,NULL)` Initialize MPI
+- `MPI_Init(NULL,NULL)` Start MPI
 - `MPI_Comm_size(MPI_COMM_WORLD, &core_size)` total number of cores.
 - `MPI_Comm_rank(MPI_COMM_WORLD, &core_rank)` serial number of the core.
 - `MPI_Send(void* data,int count,MPI_Datatype datatype,int destination,int tag,MPI_Comm communicator)` example `MPI_Send(numbers,send_number,MPI_INT,1,0,MPI_COMM_WORLD)`
@@ -27,6 +27,6 @@ mpicc hello.c -o hello; mpiexec --use-hwthread-cpus hello
 - `int MPI_Recv(void *buf, int count, MPI_Datatype datatype, int source, int tag,
        MPI_Comm comm, MPI_Status * status)` example `MPI_Recv(numbers,100,MPI_INT,0,0,MPI_COMM_WORLD,&status)` - for receiving point to point send data.
 
-- `int MPI_Barrier(MPI_Comm comm)` - barrier point for sync. <span style="background-color: #FFFF00">Marked text</span>
+- `int MPI_Barrier(MPI_Comm comm)` - barrier point for sync.b <font color="red">Caution:</font>>
 
-- `MPI_Finalize()` Finalize MPI
+- `MPI_Finalize()` End MPI
