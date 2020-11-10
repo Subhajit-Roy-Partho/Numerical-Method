@@ -11,9 +11,14 @@ mpicc hello.c -o hello; mpiexec --use-hwthread-cpus hello
 
 - `make clean` to clean all the executable files find should be installed.
 
+- `make send_receive` compile and run send_receive.c. This is a tutorial on Dynamic query and probing.
+
 
 ### Functions
 
+- `MPI_Init(NULL,NULL)`
 - `MPI_Comm_size(MPI_COMM_WORLD, &core_size)` total number of cores.
 - `MPI_Comm_rank(MPI_COMM_WORLD, &core_rank)` serial number of the core.
-- `MPI_Send(void* data,int count,MPI_Datatype datatype,int destination,int tag,MPI_Comm communicator)` example 
+- `MPI_Send(void* data,int count,MPI_Datatype datatype,int destination,int tag,MPI_Comm communicator)` example `MPI_Send(numbers,send_number,MPI_INT,1,0,MPI_COMM_WORLD)`
+
+- `MPI_Finalize()`
