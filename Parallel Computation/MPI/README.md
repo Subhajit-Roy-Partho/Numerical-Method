@@ -16,9 +16,14 @@ mpicc hello.c -o hello; mpiexec --use-hwthread-cpus hello
 
 ### Functions
 
-- `MPI_Init(NULL,NULL)`
+- `MPI_Init(NULL,NULL)` Initialize MPI
 - `MPI_Comm_size(MPI_COMM_WORLD, &core_size)` total number of cores.
 - `MPI_Comm_rank(MPI_COMM_WORLD, &core_rank)` serial number of the core.
 - `MPI_Send(void* data,int count,MPI_Datatype datatype,int destination,int tag,MPI_Comm communicator)` example `MPI_Send(numbers,send_number,MPI_INT,1,0,MPI_COMM_WORLD)`
+- `MPI_Status status` - Mpi status datatype.
+- `int MPI_Get_count(const MPI_Status * status, MPI_Datatype datatype, int *count)` example `MPI_Get_count(&status,MPI_INT,&count)` - gives the count of the number of data packets received. &count stores the number of data-packets received.
 
-- `MPI_Finalize()`
+
+
+
+- `MPI_Finalize()` Finalize MPI
