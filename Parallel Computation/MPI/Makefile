@@ -14,5 +14,11 @@ broadcast:
 	mpicc broadcast.c -o broadcast;
 	mpiexec --use-hwthread-cpus broadcast
 
+scatter-gather:
+	mpic++ scatter-gather.c -o scatter-gather;
+	mpiexec --use-hwthread-cpus scatter-gather
+
+# mpirun -n 5 --use-hwthread-cpus --oversubscribe row-mat
+
 clean:
 	find . -type f -executable -exec rm '{}' \;

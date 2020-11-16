@@ -34,4 +34,11 @@ mpicc hello.c -o hello; mpiexec --use-hwthread-cpus hello
 
 - `double MPI_Wtime(void)` returns current time in double.
 
+- `int MPI_Scatter(const void *sendbuf, int sendcount, MPI_Datatype sendtype,
+       void *recvbuf, int recvcount, MPI_Datatype recvtype, int root, MPI_Comm comm)` 
+
 - `MPI_Finalize()` End MPI
+
+### Flags
+
+`--oversubscribe`
