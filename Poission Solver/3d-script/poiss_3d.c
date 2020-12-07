@@ -4,6 +4,8 @@
 #define PI 3.14159275
 #define MAXITS 1000
 #define EPS 1.0e-6
+
+
 void initialize (void);
 void allocate (void);
 void save_data (void);
