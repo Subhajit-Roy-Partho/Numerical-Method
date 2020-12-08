@@ -206,5 +206,17 @@ void make_gnu_script(void)
   fprintf (commandfile, "replot 'solution3d-3.dat' w l\n");
   fclose (commandfile);
 }
+
+// For Transfering Boundary Values
+void boundaryTransfer(){
+  for (int i = 0; i < processors-1; i++) {
+    if(rank==i){
+
+    }
+    if(rank==i+1){
+      
+    }
+  }
+}
 //end make_gnu_script
 //end file
