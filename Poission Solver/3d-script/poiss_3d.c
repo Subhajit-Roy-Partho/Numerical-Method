@@ -28,6 +28,7 @@ double ***f;
 int imax, jmax, kmax;
 //spectral radius
 double rjac;
+
 int main (void)
 {
   initialize ();
