@@ -211,10 +211,10 @@ void make_gnu_script(void)
 void boundaryTransfer(){
   for (int i = 0; i < processors-1; i++) {
     if(rank==i){
-
+      
     }
     if(rank==i+1){
-      
+
     }
   }
 }
