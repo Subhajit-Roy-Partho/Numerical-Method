@@ -28,10 +28,10 @@ double ***f;
 int imax, jmax, kmax;
 //spectral radius
 double rjac;
+int rank,processors;
 
 int main (void)
 {
-  int rank,processors;
   double t1=0;
   MPI_Init(0,0);
   MPI_Comm_rank( MPI_COMM_WORLD, &rank);
