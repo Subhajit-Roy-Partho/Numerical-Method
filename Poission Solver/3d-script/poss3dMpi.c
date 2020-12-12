@@ -15,19 +15,10 @@ int dimx=200, dimy=200,dimz=200; // box size in terms of (x,y,z)
 double ***a,***b,***c,***d,***e,***g,***h; //Cofficient for adjusting grid spacing for our case =1.
 double ***u;// Main matrix containing all the potentials.
 double ***f; //Provision for addition of extra charges in the system.
+
+
 // Functions
-
-
-int startup(){
-  if (dimx%processors == 0) {
-
-  }else{
-    cout<<"Dimentional Problem\n";
-  }
-}
-
-
-double ***matrix3d (long rows, long cols, long depth)
+double ***matrix3d (long rows, long cols, long depth) //Create 3d matrix(x,y,z)
 {
   int i, j;
   double ***m;
@@ -43,6 +34,65 @@ double ***matrix3d (long rows, long cols, long depth)
   return m;
 }
 
+void allocate(void){//To allocate matrix using the above function
+  a = matrix3d (dimx, dimy, dimz);//Cofficient for grid spacing adjustment
+  b = matrix3d (dimx, dimy, dimz);
+  c = matrix3d (dimx, dimy, dimz);
+  d = matrix3d (dimx, dimy, dimz);
+  f = matrix3d (dimx, dimy, dimz);
+  g = matrix3d (dimx, dimy, dimz);
+  //charge source
+  h = matrix3d (dimx, dimy, dimz);
+  //central point
+  e = matrix3d (dimx, dimy, dimz);
+  //potential
+  u = matrix3d (dimx, dimy, dimz);
+}
+
+void initialise(void){
+  for (int i = 1; i < dimx-1; i++) {
+    for (int j = 0; j < dimy; j++){
+      for (int k = 0; k < dimz; k++){
+        //coefficients of the neighbouring points
+        a[i][j][k] = 1.0;
+        b[i][j][k] = 1.0;
+        c[i][j][k] = 1.0;
+        d[i][j][k] = 1.0;
+        f[i][j][k] = 1.0;
+        g[i][j][k] = 1.0;
+        //coefficient of the central point
+        e[i][j][k] = 6.0;
+      }
+    }
+  }
+  //create two parallel electrodes in the x-y-plane at k=0 and k=dimz
+  for (int i = 1; i < dimx-1; i++) {
+    for (int j = 0; j < dimy; j++) {
+      u[i][j][0] = -1.0e6;
+      u[i][j][dimz] = 1.0e6;
+    }
+  }
+}
+
+
+
+int startup(){
+  if (dimx%processors == 0) {
+    if(rank==0){//Printing only by a single processor
+      printf("Dimensions are ok\n");
+    }
+    dimx= dimx/processors + 2; //Making the partation along the x axis with 2 extra values to hold the transfer data.
+  }else{
+    if(rank==1){//Printing only by a single processor
+      printf("Dimensional Problem\n");
+    }
+    return 1;
+  }
+  allocate();
+  initialise();
+  return 0;
+}
+
 
 //Main Functions
 int main() {
@@ -52,7 +102,7 @@ int main() {
   MPI_Comm_size(MPI_COMM_WORLD,&processors); // Total number of CPUs.
 
   jrad = (cos (PI /dimx) + cos (PI /dimy) + cos (PI /dimz))/3.0;
-
+  startup();
 
 
   MPI_Finalize(); //Stopping MPI
